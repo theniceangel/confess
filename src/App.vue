@@ -1,16 +1,33 @@
 <template>
   <div id="app" @touchmove.prevent>
-    <tree msg="Welcome to Your Vue.js App"/>
+    <tree/>
+    <sun/>
+    <avocado v-show="showAvocado"/>
   </div>
 </template>
 
 <script>
 import Tree from './components/Tree.vue'
+import Sun from './components/Sun'
+import Avocado from './components/Avocado'
+import { setTimeout } from 'timers';
 
 export default {
   name: 'app',
+  data () {
+    return {
+      showAvocado: false
+    }
+  },
+  mounted () {
+    setTimeout(() => {
+      this.showAvocado = !this.showAvocado
+    }, 7000)
+  },
   components: {
-    Tree
+    Tree,
+    Sun,
+    Avocado
   }
 }
 </script>
